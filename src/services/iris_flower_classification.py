@@ -1,11 +1,25 @@
-import torch
 import torch.nn as nn
-from sklearn.datasets import load_iris
 
 
-def load():
+class IrisFlowerClassifier(nn.Module):
 
-    data = load_iris()
-    X, y = data.data, data.target
 
-    print(y[:10])
+    def __init__(self):
+
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Linear(4, 64),
+            nn.ReLU(),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Linear(32, 16),
+            nn.ReLU(),
+            nn.Linear(16, 8),
+            nn.ReLU(),
+            nn.Linear(8, 3)
+        )
+
+
+    def forward(self, X):
+
+        return self.model(X)
