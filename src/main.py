@@ -1,12 +1,11 @@
-from services.iris_flower_data_loader import IrisDataLoader
-from services.iris_flower_classification import IrisFlowerClassifier
+from services.train import IrisFlowerTrainer
 
 
 def main():
     print("Hello from iris-flower-classification!")
-    iris_data_loader = IrisDataLoader()
-    classifier = IrisFlowerClassifier()
-    data = iris_data_loader.transform_data()
+    trainer = IrisFlowerTrainer()
+    trainer.train(epochs=200, lr=0.01)
+    trainer.evaluate()
     
 
 
